@@ -12,6 +12,7 @@ $log=fopen("text.txt","w");
 while(($row=fgets($file))!==false)
 {
 //parse for content
+	echo $row;exit;
 	$ip=$date=$file_name=$location="";
 	preg_match('/^[0-9.]*/',$row,$match);
 	$ip=(isset($match[0]))?$match[0]:"";
