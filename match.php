@@ -1,7 +1,7 @@
 <?php 
 require 'vendor/autoload.php';
 use GeoIp2\Database\Reader;
-$reader = new Reader(getcwd().'/GeoLite2-City.mmdb');
+$reader = new Reader('/home/dsstudios/plist-logger/GeoLite2-City.mmdb');
 //read file
 foreach(["",".1",".2",".3",".4",".5",".6",".7"] as $value)
 {
