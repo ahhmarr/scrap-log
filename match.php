@@ -5,10 +5,12 @@ $reader = new Reader(getcwd().'/GeoLite2-City.mmdb');
 // echo getcwd();
 //read file
 $file=fopen(getcwd()."/string.txt","r");
+$log=fopen("text.txt","w");
+
 while(($row=fgets($file))!==false)
 {
 //parse for content
-	$ip=$date=$file_name="";
+	$ip=$date=$file_name=$location="";
 	preg_match('/^[0-9.]*/',$row,$match);
 	$ip=(isset($match[0]))?$match[0]:"";
 	preg_match('/\[.*\]/', $row,$match);
@@ -26,8 +28,17 @@ while(($row=fgets($file))!==false)
 		$file_name=str_replace('"GET /',"",$file_name);
 	}
 	$city=$reader->city($ip);
-	var_dump($city);exit;
-
+	$cityName=$city->city->name?",".$city->city->name:"";
+	$location=$city->country->name.$cityName;
+	if(!$location || !$ip || !$date || !$file_name)
+		continue;
+	$row=str_pad($date,25).
+		 str_pad($ip, 25).
+		 str_pad($file_name, 50).
+		 str_pad($location,15)."\n";
+	fwrite($log, $row);
 }
+fclose($log);
 fclose($file);
+
 //print relevant content
