@@ -6,7 +6,7 @@ $reader = new Reader(getcwd().'/GeoLite2-City.mmdb');
 foreach(["",".1",".2",".3",".4",".5",".6",".7"] as $value)
 {
 	writeLogEntries("/home/dsstudios/logs/frontend/access_Adification.log$value",
-					"/home/dsstudios/webapps/htdocs/plist.log.$value");
+					"/home/dsstudios/webapps/htdocs/plist.log$value");
 }
 function writeLogEntries($mainPath,$logPath)
 {
