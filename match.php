@@ -29,11 +29,12 @@ while(($row=fgets($file))!==false)
 	{
 		$file_name=str_replace('"GET /',"",$file_name);
 	}
+	if(!$location || !$ip || !$date || !$file_name)
+		continue;
 	$city=$reader->city($ip);
 	$cityName=$city->city->name?",".$city->city->name:"";
 	$location=$city->country->name.$cityName;
-	if(!$location || !$ip || !$date || !$file_name)
-		continue;
+	
 	$row=str_pad($date,25).
 		 str_pad($ip, 25).
 		 str_pad($file_name, 50).
