@@ -31,7 +31,7 @@ while(($row=fgets($file))!==false)
 		$file_name=str_replace('"GET /',"",$file_name);
 	}
 	echo "ip $ip  date $date location $location file_name $file_name";exit;
-	if(!$location || !$ip || !$date || !$file_name)
+	if(!$ip || !$date || !$file_name || substr_count($ip, ".")<4)
 		continue;
 	$city=$reader->city($ip);
 	$cityName=$city->city->name?",".$city->city->name:"";
