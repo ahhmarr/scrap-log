@@ -38,7 +38,7 @@ while(($row=fgets($file))!==false)
 		$cityName=$city->city->name?",".$city->city->name:"";
 		$location=$city->country->name.$cityName;	
 	}
-	exception(Exception $e)
+	catch(Exception $e)
 	{
 		$location="Not Found";
 	}
