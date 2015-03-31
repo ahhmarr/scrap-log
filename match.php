@@ -32,10 +32,16 @@ while(($row=fgets($file))!==false)
 	}
 	if(!$ip || !$date || !$file_name || substr_count($ip, ".")<3)
 		continue;
-	$city=$reader->city($ip);
-	$cityName=$city->city->name?",".$city->city->name:"";
-	$location=$city->country->name.$cityName;
-	
+	try
+	{
+		$city=$reader->city($ip);
+		$cityName=$city->city->name?",".$city->city->name:"";
+		$location=$city->country->name.$cityName;	
+	}
+	exception(Exception $e)
+	{
+		$location="Not Found";
+	}
 	$row=str_pad($date,25).
 		 str_pad($ip, 25).
 		 str_pad($file_name, 50).
