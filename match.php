@@ -6,8 +6,10 @@ $reader = new Reader(getcwd().'/GeoLite2-City.mmdb');
 //read file
 $mainPath=getcwd()."/string.txt";
 // $mainPath="/home/dsstudios/logs/frontend/access_Adification.log";
+// $logPath="test.txt";
+$logPath="/home/dsstudios/webapps/htdocs/plist.log";
 $file=fopen($mainPath,"r");
-$log=fopen("text.txt","w");
+$log=fopen($logPath,"w");
 
 while(($row=fgets($file))!==false)
 {
