@@ -4,7 +4,9 @@ use GeoIp2\Database\Reader;
 $reader = new Reader(getcwd().'/GeoLite2-City.mmdb');
 // echo getcwd();
 //read file
-$file=fopen(getcwd()."/string.txt","r");
+$testPath=getcwd()."/string.txt";
+$mainPath="/home/dsstudios/logs/frontend/access_Adification.log";
+$file=fopen($mainPath,"r");
 $log=fopen("text.txt","w");
 
 while(($row=fgets($file))!==false)
