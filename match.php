@@ -24,7 +24,7 @@ while(($row=fgets($file))!==false)
 		$date=str_replace("[", "", $date);
 		$date=str_replace("]", "", $date);
 	}
-	preg_match('/"GET \/.*.plist/',$row,$match);
+	preg_match('/"GET \/.*.plist HTTP/1.1" 200/',$row,$match);
 	$file_name=(isset($match[0]))?$match[0]:"";
 	if($file_name)
 	{
