@@ -4,8 +4,8 @@ use GeoIp2\Database\Reader;
 $reader = new Reader(getcwd().'/GeoLite2-City.mmdb');
 // echo getcwd();
 //read file
-$testPath=getcwd()."/string.txt";
-$mainPath="/home/dsstudios/logs/frontend/access_Adification.log";
+$mainPath=getcwd()."/string.txt";
+// $mainPath="/home/dsstudios/logs/frontend/access_Adification.log";
 $file=fopen($mainPath,"r");
 $log=fopen("text.txt","w");
 
@@ -24,11 +24,12 @@ while(($row=fgets($file))!==false)
 		$date=str_replace("[", "", $date);
 		$date=str_replace("]", "", $date);
 	}
-	preg_match('/"GET \/.*.plist HTTP/1.1" 200/',$row,$match);
+	preg_match('/"GET \/.*.plist HTTP\/1.1" 200/',$row,$match);
 	$file_name=(isset($match[0]))?$match[0]:"";
 	if($file_name)
 	{
 		$file_name=str_replace('"GET /',"",$file_name);
+		$file_name=str_replace(' HTTP/1.1" 200',"",$file_name);
 	}
 	if(!$ip || !$date || !$file_name || substr_count($ip, ".")<3)
 		continue;
