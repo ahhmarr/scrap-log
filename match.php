@@ -12,7 +12,7 @@ $log=fopen("text.txt","w");
 while(($row=fgets($file))!==false)
 {
 //parse for content
-	echo $row;exit;
+	echo $row."\n";
 	$ip=$date=$file_name=$location="";
 	preg_match('/^[0-9.]*/',$row,$match);
 	$ip=(isset($match[0]))?$match[0]:"";
@@ -30,6 +30,7 @@ while(($row=fgets($file))!==false)
 	{
 		$file_name=str_replace('"GET /',"",$file_name);
 	}
+	echo "ip $ip  date $date location $location file_name $file_name";exit;
 	if(!$location || !$ip || !$date || !$file_name)
 		continue;
 	$city=$reader->city($ip);
