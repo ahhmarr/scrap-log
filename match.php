@@ -25,8 +25,8 @@ while(($row=fgets($file))!==false)
 	{
 		$file_name=str_replace('"GET /',"",$file_name);
 	}
-	$reader->city($ip);
-	var_dump($reader);exit;
+	$city=$reader->city($ip);
+	var_dump($city);exit;
 
 }
 fclose($file);
