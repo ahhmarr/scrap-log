@@ -10,6 +10,7 @@ foreach(["",".1",".2",".3",".4",".5",".6",".7"] as $value)
 }
 function writeLogEntries($mainPath,$logPath)
 {
+	global $reader;
 	$file=fopen($mainPath,"r");
 	$log=fopen($logPath,"w");
 
